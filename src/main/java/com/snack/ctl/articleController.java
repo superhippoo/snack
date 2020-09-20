@@ -49,6 +49,23 @@ public class articleController {
 
     }
     
+    @RequestMapping(value = "/selectarticlelistbybrdno",method = RequestMethod.POST)
+    @ResponseBody
+    public List<articleVO> selectarticlelistbybrdno(@RequestBody articleVO articlevo){
+    	List<ArticleEntity> list = new ArrayList<ArticleEntity>();
+    	List<articleVO> articlelist = new ArrayList<articleVO>();
+    	list = articlerepo.findBybrdNo(articlevo.getBrdNo());
+    	
+    	ModelMapper modelMapper = new ModelMapper();
+    	
+    	for (int i = 0; i < list.size(); i++) {
+    		articlelist.add(modelMapper.map(list.get(i),articleVO.class));
+		}
+    	
+        return articlelist;
+    }
+
+    
 	@RequestMapping(value = "/updatearticle", method = RequestMethod.POST)
 	@ResponseBody
 	public void updatearticle(@RequestBody articleVO articlevo) {

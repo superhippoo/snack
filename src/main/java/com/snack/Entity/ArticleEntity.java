@@ -12,7 +12,7 @@ public class ArticleEntity {
     @Column
 	private String article_id;
 	@Column
-	private String brd_no;
+	private String brdNo;
 	@Column
 	private String title;
     @Column
@@ -35,11 +35,11 @@ public class ArticleEntity {
 	public void setArticle_id(String article_id) {
 		this.article_id = article_id;
 	}
-	public String getBrd_no() {
-		return brd_no;
+	public String getBrdNo() {
+		return brdNo;
 	}
-	public void setBrd_no(String brd_no) {
-		this.brd_no = brd_no;
+	public void setBrdNo(String brdNo) {
+		this.brdNo = brdNo;
 	}
 	public String getTitle() {
 		return title;

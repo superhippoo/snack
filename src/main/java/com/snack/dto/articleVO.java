@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class articleVO {	
 
 	private String article_id;
-	private String brd_no;
+	private String brdNo;
 	private String title;
 	private String content;
 	private String val_yn;
@@ -21,11 +21,11 @@ public class articleVO {
 	public void setArticle_id(String article_id) {
 		this.article_id = article_id;
 	}
-	public String getBrd_no() {
-		return brd_no;
+	public String getBrdNo() {
+		return brdNo;
 	}
-	public void setBrd_no(String brd_no) {
-		this.brd_no = brd_no;
+	public void setBrdNo(String brdNo) {
+		this.brdNo = brdNo;
 	}
 	public String getTitle() {
 		return title;
