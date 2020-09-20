@@ -11,7 +11,9 @@ public class ArticleEntity {
 	@Id
     @Column
 	private String article_id;
-    @Column
+	@Column
+	private String brd_no;
+	@Column
 	private String title;
     @Column
 	private String content;
@@ -32,6 +34,12 @@ public class ArticleEntity {
 	}
 	public void setArticle_id(String article_id) {
 		this.article_id = article_id;
+	}
+	public String getBrd_no() {
+		return brd_no;
+	}
+	public void setBrd_no(String brd_no) {
+		this.brd_no = brd_no;
 	}
 	public String getTitle() {
 		return title;
