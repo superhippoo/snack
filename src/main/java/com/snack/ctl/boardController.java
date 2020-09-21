@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.snack.Entity.ArticleEntity;
 import com.snack.Entity.BoardEntity;
-import com.snack.dao.articleRepository;
 import com.snack.dao.boardRepository;
-import com.snack.dto.articleVO;
 import com.snack.dto.boardVO;
 import com.snack.util.uidUtil;
 @RestController
@@ -41,56 +38,40 @@ public class boardController {
     	
         return boardlist;
     }
-//
-//    @RequestMapping(value = "/selectarticle",method = RequestMethod.POST)
-//    @ResponseBody
-//    public articleVO selectarticle(@RequestBody articleVO articlevo){
-//    	ModelMapper modelMapper = new ModelMapper();
-//    	articleVO article = modelMapper.map(articlerepo.findById(articlevo.getArticle_id()).orElseGet(ArticleEntity::new), articleVO.class);
-//    	return article;
-//
-//    }
-//    
-//    @RequestMapping(value = "/selectarticlelistbybrdno",method = RequestMethod.POST)
-//    @ResponseBody
-//    public List<articleVO> selectarticlelistbybrdno(@RequestBody articleVO articlevo){
-//    	List<ArticleEntity> list = new ArrayList<ArticleEntity>();
-//    	List<articleVO> articlelist = new ArrayList<articleVO>();
-//    	list = articlerepo.findBybrdNo(articlevo.getBrdNo());
-//    	
-//    	ModelMapper modelMapper = new ModelMapper();
-//    	
-//    	for (int i = 0; i < list.size(); i++) {
-//    		articlelist.add(modelMapper.map(list.get(i),articleVO.class));
-//		}
-//    	
-//        return articlelist;
-//    }
-//
-//    
-//	@RequestMapping(value = "/updatearticle", method = RequestMethod.POST)
-//	@ResponseBody
-//	public void updatearticle(@RequestBody articleVO articlevo) {
-//    	ModelMapper modelMapper = new ModelMapper();
-//    	ArticleEntity articleentity = modelMapper.map(articlevo, ArticleEntity.class);
-//		articlerepo.save(articleentity);
-//	}
-// 
-//	@RequestMapping(value = "/deletearticle", method = RequestMethod.POST)
-//	@ResponseBody
-//	public void deletearticle(@RequestBody articleVO articlevo) {
-//    	ModelMapper modelMapper = new ModelMapper();
-//    	ArticleEntity articleentity = modelMapper.map(articlevo, ArticleEntity.class);
-//		articlerepo.delete(articleentity);
-//	}
-//	
-//	@RequestMapping(value = "/insertarticle", method = RequestMethod.POST)
-//	@ResponseBody
-//	public void insertarticle(@RequestBody articleVO articlevo) {
-//		
-//		articlevo.setArticle_id(uidUtil.generateUid("A"));
-//    	ModelMapper modelMapper = new ModelMapper();
-//    	ArticleEntity articleentity = modelMapper.map(articlevo, ArticleEntity.class);
-//		articlerepo.save(articleentity);
-//	}
+    
+    @RequestMapping(value = "/selectboard",method = RequestMethod.POST)
+    @ResponseBody
+    public boardVO selectboard(@RequestBody boardVO boardvo){
+    	
+    	ModelMapper modelMapper = new ModelMapper();
+    	boardVO board = modelMapper.map(boardrepo.findById(boardvo.getBrdNo()).orElseGet(BoardEntity::new), boardVO.class);
+    	
+        return board;
+    }
+    
+    @RequestMapping(value = "/updateboard",method = RequestMethod.POST)
+    @ResponseBody
+    public void updateboard(@RequestBody boardVO boardvo){    	
+    	ModelMapper modelMapper = new ModelMapper();
+    	BoardEntity boardentity = modelMapper.map(boardvo,BoardEntity.class);
+    	boardrepo.save(boardentity);    	
+    }
+    
+    @RequestMapping(value = "/deleteboard",method = RequestMethod.POST)
+    @ResponseBody
+    public void deleteboard(@RequestBody boardVO boardvo){    	
+    	ModelMapper modelMapper = new ModelMapper();
+    	BoardEntity boardentity = modelMapper.map(boardvo,BoardEntity.class);
+    	boardrepo.delete(boardentity);    	
+    }
+    
+    @RequestMapping(value = "/insertboard",method = RequestMethod.POST)
+    @ResponseBody
+    public void insertboard(@RequestBody boardVO boardvo){    	
+    	boardvo.setBrdNo(uidUtil.generateUid("B"));
+    	ModelMapper modelMapper = new ModelMapper();
+    	BoardEntity boardentity = modelMapper.map(boardvo,BoardEntity.class);
+    	boardrepo.save(boardentity);    	
+    }
+
 }
